@@ -1,0 +1,6 @@
+framework module YHSDKLib {
+  umbrella header "YHSDKLib.h"
+
+  export *
+  module * { export * }
+}

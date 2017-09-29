@@ -1,0 +1,6 @@
+framework module WanAppStroeSDK {
+  umbrella header "WanAppStroeSDK.h"
+
+  export *
+  module * { export * }
+}

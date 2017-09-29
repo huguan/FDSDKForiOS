@@ -1,0 +1,6 @@
+framework module HN669SDKCore {
+  umbrella header "HN669SDKCore.h"
+
+  export *
+  module * { export * }
+}

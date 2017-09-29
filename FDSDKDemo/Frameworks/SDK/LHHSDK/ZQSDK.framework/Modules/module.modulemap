@@ -1,0 +1,6 @@
+framework module ZQSDK {
+  umbrella header "ZQSDK.h"
+
+  export *
+  module * { export * }
+}

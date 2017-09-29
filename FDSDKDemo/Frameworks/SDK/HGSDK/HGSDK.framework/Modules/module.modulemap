@@ -1,0 +1,6 @@
+framework module HGSDK {
+  umbrella header "HGSDK.h"
+
+  export *
+  module * { export * }
+}

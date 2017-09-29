@@ -1,0 +1,6 @@
+framework module qdSdkFw {
+  umbrella header "qdSdkFw.h"
+
+  export *
+  module * { export * }
+}

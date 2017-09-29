@@ -1,0 +1,6 @@
+framework module FDSDK {
+  umbrella header "FDSDK.h"
+
+  export *
+  module * { export * }
+}

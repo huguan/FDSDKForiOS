@@ -1,0 +1,6 @@
+framework module SCorePluginPlatform {
+  umbrella header "SCorePluginPlatform.h"
+
+  export *
+  module * { export * }
+}

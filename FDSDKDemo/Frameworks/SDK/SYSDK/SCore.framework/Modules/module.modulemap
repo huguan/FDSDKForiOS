@@ -1,0 +1,6 @@
+framework module SCore {
+  umbrella header "SCore.h"
+
+  export *
+  module * { export * }
+}

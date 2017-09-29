@@ -1,0 +1,6 @@
+framework module YLPlatformSDK {
+  umbrella header "YLPlatformSDK.h"
+
+  export *
+  module * { export * }
+}

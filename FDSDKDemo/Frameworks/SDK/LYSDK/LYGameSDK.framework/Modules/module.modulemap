@@ -1,0 +1,6 @@
+framework module LYGameSDK {
+  umbrella header "LYGameSDK.h"
+
+  export *
+  module * { export * }
+}

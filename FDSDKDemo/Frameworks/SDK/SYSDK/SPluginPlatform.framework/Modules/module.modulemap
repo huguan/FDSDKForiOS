@@ -1,0 +1,6 @@
+framework module SPluginPlatform {
+  umbrella header "SPluginPlatform.h"
+
+  export *
+  module * { export * }
+}
