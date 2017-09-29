@@ -853,7 +853,7 @@ XY		|   支持  |   支持    |
 以上三部为公共配置。每新增一个渠道SDK都是如此。不同之处在后面列出来<br/>
 
 ##升游SDK所需要配置</br>
-###51wan渠道
+###51wan渠道<br/>
 1、渠道所需要的sdk如下<br/>
 <img src="https://raw.githubusercontent.com/huguan/FDSDKForiOS/master/Snapshots/SY51SDK.png"><br/>
 
@@ -919,7 +919,7 @@ Xcode7以上需要手动打开网络请求:<br/>
 >游戏开始时只需要调用一次上报角色等级接口（否则充值失败）<br/>
 <img src="https://raw.githubusercontent.com/huguan/FDSDKForiOS/master/Snapshots/SYUpdateRoleInfo.png"><br/>
 
-###XY渠道
+###XY渠道<br/>
 1、渠道所需要的sdk如下<br/>
 <img src="https://raw.githubusercontent.com/huguan/FDSDKForiOS/master/Snapshots/SYXYSDK.png"><br/>
 
