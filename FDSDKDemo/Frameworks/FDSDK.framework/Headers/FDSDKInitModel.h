@@ -232,6 +232,19 @@
 
 @end
 
+@interface FDLeYouSDKInitModel : NSObject
+    
+/**
+ 乐游appID
+ */
+@property (nonatomic, strong) NSString *appID;
+    
+/**
+ 乐游gameID
+ */
+@property (nonatomic, strong) NSString *gameID;
+    
+@end
 
 
 

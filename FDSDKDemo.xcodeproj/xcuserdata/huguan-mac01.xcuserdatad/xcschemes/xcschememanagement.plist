@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>FDLeYouSDKDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>FDPPSDKDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -68,6 +73,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>9</integer>
+		</dict>
+		<key>FDYXMSDKDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -138,6 +148,11 @@
 			<true/>
 		</dict>
 		<key>8FC6F1F01EBB22D500AA2C8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FC81E591FA375AC009BF348</key>
 		<dict>
 			<key>primary</key>
 			<true/>

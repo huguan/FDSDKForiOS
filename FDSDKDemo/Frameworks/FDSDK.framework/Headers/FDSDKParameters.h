@@ -26,8 +26,8 @@ typedef NS_ENUM(NSInteger, FDPlatformType) {
     FDXZPlatform      = 13,         //玄藏
     FDLHHPlatform     = 14,         //乐嗨嗨
     FDSYPlatform      = 15,         //升游
-    FDGCPlatform      = 16          //很猛
-
+    FDGCPlatform      = 16,          //很猛
+    FDLeYouPlatform   = 17          //乐游（另类越狱版）
 
 };
 
@@ -93,6 +93,11 @@ typedef NS_ENUM(NSInteger, FDPlatformType) {
  *  果盘SDK初始化参数对象
  */
 @property (nonatomic, strong) FDGpSDKInitModel *gpSDKInitModel;
+    
+/**
+ *  乐游SDK初始化参数对象
+ */
+@property (nonatomic, strong) FDLeYouSDKInitModel *leYouSDKInitModel;
 
 /**
  *  SDK初始化渠道

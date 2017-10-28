@@ -43,7 +43,7 @@ XY		|   支持  |   支持    |
 银狐		|   支持  |   支持    |
 乐玩		|   支持  |   支持    |
 果盘		|   支持  |   不支持  |  合并库过大
-
+乐游		|   支持  |   不支持  |  
 
 
 
@@ -426,6 +426,28 @@ XY		|   支持  |   支持    |
     </tbody>
 </table>
 
+##### LeYouSDK FDLeYouSDKInitModel参数说明
+<table>
+    <thead>
+        <tr>
+            <th>参数名</th>
+            <th>参数类型</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>appID</td>
+            <td>NSString</td>
+            <td>乐游appID</td>
+        </tr>
+        <tr>
+            <td>gameID</td>
+            <td>NSString</td>
+            <td>乐游gameID</td>
+        </tr>
+     </tbody>
+</table>
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -511,8 +533,19 @@ XY		|   支持  |   支持    |
     [hgSDKInitModel setChannelId:@"5"];
     [hgSDKInitModel setCpId:@"2344"];
     [hgSDKInitModel setWxAppId:@"wx439c5855ea4dghd3"];
-
     [[FDSDKParameters sharedHGSDKParameters] setHgSDKInitModel:hgSDKInitModel];
+    
+    // 设置果盘SDK参数
+    FDGpSDKInitModel *gpSDKInitModel = [FDGpSDKInitModel new];
+    [gpSDKInitModel setAppId:@"101101"];
+    [gpSDKInitModel setSecretKey:@"GuopanSDK8^(Llad"];
+    [[FDSDKParameters sharedHGSDKParameters] setGpSDKInitModel:gpSDKInitModel];
+    
+    // 设置乐游SDK参数
+    FDLeYouSDKInitModel *leYouSDKInitModel = [FDLeYouSDKInitModel new];
+    [leYouSDKInitModel setAppID:@"1643"];
+    [leYouSDKInitModel setGameID:@"1643"];
+    [[FDSDKParameters sharedHGSDKParameters] setLeYouSDKInitModel:leYouSDKInitModel];
 
     //选取需要初始化的sdk（银狐sdk只需要执行该代码）
     [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDQDPlatform];
@@ -1687,8 +1720,77 @@ done
 }
 ```
 
+##乐游SDK所需要配置<br/>
+####1.添加乐游SDK资源<br/>
+将sdk内的<br/>
+LYSDK.bundle<br/>
+LYSDK.framework<br/>
+WXApi.h<br/>
+WebchatAutSDK.h<br/>
+WXApiObject.h<br/>
+libWebChatSDK.a<br/>
+AlipaySDK.bundle<br/>
+AlipaySDK.framework<br/>
+ChannelId.plist<br/>
+拖入游戏项目，记得勾上“Copy items if needed”；（若已存在请忽略）<br/>
 
+####2.添加链接库<br/>
+由于加入支付宝和微信的支付SDK，所以需要添加如下静态库文件：<br/>
+在Build Phases选项卡的Link Binary With Libraries中，增加以下依赖：（若已存在请忽略）<br/>
 
+libc++.tbd<br/>
+libz.tbd<br/>
+libsqlite3.0.tbd<br/>
+Security.framework<br/>
+coreMotion.framework<br/>
+CFNetwork.framework<br/>
+Foundation.framework<br/>
+UIKit.framework<br/>
+CoreGraphics.framework<br/>
+CoreText.framework<br/>
+QuartzCore.framework<br/>
+CoreTelephony.framework<br/>
+SystemConfiguration.framework<br/>
+
+链接库如下图：<br/>
+<img src="Snapshots/LeYouIMAGE001.png"><br/>
+
+####3. 项目Targets设置<br/>
+`Build Setting` -> `Header Search Paths` 增加 `LYSDK.framework/Headers`；<br/>
+<font color=#FF0000>注意：Headers的路径以具体乐游SDK导入的路径为准</font><br/>
+
+`Build Setting` -> `Other Linker Flags` 添加 `-all_load`；<br/>
+
+####4. info.plist配置（若已存在请忽略）<br/>
+Http网络配置：<br/>
+\<key>NSAppTransportSecurity\</key><br/>
+    \<dict><br/>
+        \<key>NSAllowsArbitraryLoads\</key><br/>
+        \<true/><br/>
+    \</dict><br/>
+  
+以及乐游渠道号：（需在ChannelId.plist和info.plist两处配置）<br/>
+\<key>LYChannel\</key><br/>
+\<string>4470\</string><br/>
+
+####5.添加微信、支付宝白名单
+具体方法：<br/>
+1.在项目的info.plist中添加一LSApplicationQueriesSchemes，类型为Array。<br/>
+2.然后给它添加一个需要支持的项目，类型为字符串类型；请添加以下四个：<br/>
+<img src="Snapshots/LeYou002.png"><br/>
+
+URL Types配置（为了支付完成之后能跳转回游戏）<br/>
+
+具体方法：<br/>
+TARGETS ----> info ----> URL TYPES 添加如下两个：<br/>
+支付宝：identifier：alipay<br/>
+URL Schemes：com.ios.moge.alipay<br/>
+
+微信：  identifier：weixin<br/>
+URL Schemes：wxa3d58c25d7ec5c62<br/>
+
+如下图：<br/>
+<img src="Snapshots/LeYou003.png"><br/>
 
 
 系统要求

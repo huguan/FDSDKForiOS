@@ -24,11 +24,14 @@
     
     [self.window makeKeyAndVisible];
     
-    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"50"];
-    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"ea718a559b4a825e5481afc695ee2abb"];
+//    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"50"];
+//    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"ea718a559b4a825e5481afc695ee2abb"];
     
-    //        [[FDSDKParameters sharedHGSDKParameters] setAppId:@"143"];
-    //        [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"a90f40a1f59edb8bb6938ca98e043518"];
+    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"183"];
+    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"c87d1b52d2f702c1b9cb12ed0d224630"];
+    
+//            [[FDSDKParameters sharedHGSDKParameters] setAppId:@"143"];
+//            [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"a90f40a1f59edb8bb6938ca98e043518"];
     
     //    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"119"];
     //            [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"1060420dde8366fc59396c317d789bd6"];
@@ -121,7 +124,13 @@
     [gpSDKInitModel setSecretKey:@"GuopanSDK8^(Llad"];
     [[FDSDKParameters sharedHGSDKParameters] setGpSDKInitModel:gpSDKInitModel];
     
-    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDSYPlatform];
+    // 设置乐游SDK参数
+    FDLeYouSDKInitModel *leYouSDKInitModel = [FDLeYouSDKInitModel new];
+    [leYouSDKInitModel setAppID:@"1643"];
+    [leYouSDKInitModel setGameID:@"1643"];
+    [[FDSDKParameters sharedHGSDKParameters] setLeYouSDKInitModel:leYouSDKInitModel];
+    
+    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDLeYouPlatform];
     
     [[FDSDK sharedInstance] fdInitWithSDKParameters:[FDSDKParameters sharedHGSDKParameters]];
     
