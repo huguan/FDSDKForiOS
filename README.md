@@ -44,7 +44,7 @@ XY		|   支持  |   支持    |
 乐玩		|   支持  |   支持    |
 果盘		|   支持  |   不支持  |  合并库过大
 乐游		|   支持  |   不支持  |  
-
+应天		|   支持  |   不支持  |  
 
 
 ##### FDSDKParameters参数说明
@@ -547,11 +547,16 @@ XY		|   支持  |   支持    |
     [leYouSDKInitModel setGameID:@"1643"];
     [[FDSDKParameters sharedHGSDKParameters] setLeYouSDKInitModel:leYouSDKInitModel];
 
+	// 设置应天SDK参数
+    //请在mchannelinfos.plist中填写相关参数
+
     //选取需要初始化的sdk（银狐sdk只需要执行该代码）
     [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDQDPlatform];
     
     //初始化SDK
     [[FDSDK sharedInstance] fdInitWithSDKParameters:[FDSDKParameters sharedHGSDKParameters]];
+    
+    [[FDSDK sharedInstance] fdApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
 }
@@ -580,6 +585,73 @@ XY		|   支持  |   支持    |
     return YES;
 }
 ```
+
+##### UIApplicationDelegate响应事件
+```objective-c
+- (void)fdApplicationDidBecomeActive:(UIApplication *)application;
+- (void)fdWillEnterForeground:(UIApplication *)application;
+
+- (void)fdApplication:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+
+- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+- (void)fdApplication:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
+- (void)fdApplicationWillResignActive:(UIApplication *)application;
+- (void)fdApplicationDidEnterBackground:(UIApplication *)application;
+- (void)fdApplicationWillTerminate:(UIApplication *)application;
+- (void)fdApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+```
+<font color=#FF0000>注意：需要在项目实现UIApplicationDelegate的类中调用上述接口。</font><br/>
+<font color=#FF0000>如下：</font><br/>
+
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[FDSDK sharedInstance] fdApplication:application didFinishLaunchingWithOptions:launchOptions];
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    [[FDSDK sharedInstance] fdPayResult:application openURL:url options:nil];
+    return YES;
+}
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
+    [[FDSDK sharedInstance] fdPayResult:app openURL:url options:options];
+    [[FDSDK sharedInstance] fdShareResult:app openURL:url options:options];
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[FDSDK sharedInstance] fdPayResult:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    return YES;
+}
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[FDSDK sharedInstance] fdApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[FDSDK sharedInstance] fdApplication:application didReceiveRemoteNotification:userInfo];
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    [[FDSDK sharedInstance] fdApplication:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    [[FDSDK sharedInstance] fdApplication:application didReceiveLocalNotification:notification];
+}
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[FDSDK sharedInstance] fdApplicationWillResignActive:application];
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[FDSDK sharedInstance] fdApplicationDidEnterBackground:application];
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[FDSDK sharedInstance] fdWillEnterForeground:application];
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[FDSDK sharedInstance] fdApplicationDidBecomeActive:application];
+}
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[FDSDK sharedInstance] fdApplicationWillTerminate:application];
+}
+```
+
 
 登陆方法
 ==============
@@ -1773,7 +1845,7 @@ Http网络配置：<br/>
 \<key>LYChannel\</key><br/>
 \<string>4470\</string><br/>
 
-####5.添加微信、支付宝白名单
+####5.添加微信、支付宝白名单</br>
 具体方法：<br/>
 1.在项目的info.plist中添加一LSApplicationQueriesSchemes，类型为Array。<br/>
 2.然后给它添加一个需要支持的项目，类型为字符串类型；请添加以下四个：<br/>
@@ -1792,6 +1864,28 @@ URL Schemes：wxa3d58c25d7ec5c62<br/>
 如下图：<br/>
 <img src="Snapshots/LeYou003.png"><br/>
 
+##YingTianSDK所需要配置</br>
+####1.相关依赖库如下</br>
+红色框住部分为系统库</br>
+<img src="Snapshots/YingTian001.png"><br/>
+
+####2.在Build Settings 里搜索Enable Bitcode 将Yes改为No</br>
+<img src="Snapshots/BitCodeNo.png"><br/>
+
+####3.允许HTTP请求</br>
+<img src="Snapshots/HTTP.png"><br/>
+
+####4.第三方平台参数配置的设置（只需要设置需要的参数，不需要的可以删除或者为空</br>
+在项目根目录下创建mchinfo.plist文件，键值内容如下图：<br/>
+<img src="Snapshots/YingTian002.png"><br/>
+
+####5.APP跳转的时候需要配置URLSchame和白名单，所以在应用程序的info.plist文件中设置一下内容，如图所示：</br>
+<img src="Snapshots/YingTian003.png"><br/>
+配置白名单：<br/>
+<img src="Snapshots/YingTian004.png"><br/>
+
+####6.渠道分包的设置：在项目根目录下创建mchannelinfos.plist文件，键值内容如下：</br>
+<img src="Snapshots/YingTian005.png"><br/>
 
 系统要求
 ==============

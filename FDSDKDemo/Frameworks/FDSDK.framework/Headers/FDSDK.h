@@ -105,8 +105,6 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
  */
 + (FDSDK *)sharedInstance;
 
-
-- (void)fdApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 /**
  *  初始化SDK
  *
@@ -133,18 +131,6 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
 - (void)fdPayResult:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 ;
 
-- (void)fdApplicationDidBecomeActive:(UIApplication *)application;
-- (void)fdWillEnterForeground:(UIApplication *)application;
-
-- (void)fdApplication:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-
-- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
-
-- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
-- (void)fdApplication:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
-- (void)fdApplicationWillResignActive:(UIApplication *)application;
-- (void)fdApplicationDidEnterBackground:(UIApplication *)application;
-- (void)fdApplicationWillTerminate:(UIApplication *)application;
 /**
  *	初始化服务器
  *	@param	serverId  游戏参数配置项（区服）
@@ -200,4 +186,23 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
  *
  */
 - (void)updateRoleInfo:(FDRoleModel *) roleModel;
+
+
+/**
+ UIApplicationDelegate响应事件
+ */
+- (void)fdApplicationDidBecomeActive:(UIApplication *)application;
+- (void)fdWillEnterForeground:(UIApplication *)application;
+
+- (void)fdApplication:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+
+- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+- (void)fdApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+- (void)fdApplication:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
+- (void)fdApplicationWillResignActive:(UIApplication *)application;
+- (void)fdApplicationDidEnterBackground:(UIApplication *)application;
+- (void)fdApplicationWillTerminate:(UIApplication *)application;
+- (void)fdApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
 @end

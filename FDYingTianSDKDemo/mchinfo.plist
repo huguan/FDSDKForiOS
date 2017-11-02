@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>requestURL</key>
+    <string>http://www.huuyu.com</string>
+    <key>JBYAPPScheme</key>
+    <string>mchjbysdk</string>
+    <key>ZFBAppScheme</key>
+    <string>mchpaysdk</string>
+    <key>weixinAppId</key>
+    <string>wx91386443e1dfb650</string>
+    <key>QQAppId</key>
+    <string>101377698</string>
+    <key>weiboAppId</key>
+    <string>2976302597</string>
+    <key>weiboURL</key>
+    <string>http://www.sharesdk.cn</string>
+    <key>BaiduAppKey</key>
+    <string>TwQ5yfjQkWwAbtG4AV9f9178</string>
+    <key>BaiduAPPID</key>
+    <string>9161444</string>
+</dict>
+</plist>

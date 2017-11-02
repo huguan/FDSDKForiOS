@@ -79,6 +79,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>FDYingTianSDKDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -123,6 +128,11 @@
 			<true/>
 		</dict>
 		<key>8F643F321F0B85D900F07EBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FA255311FAB010900C76753</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,7 +19,6 @@
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     UIImage *buttonImage = [UIImage imageNamed:@"FD_SDK_Button"];
     
-    
     UIButton *loginButton = [UIButton new];
     [loginButton setFrame:CGRectMake(40, 140, 100, 40)];
     [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

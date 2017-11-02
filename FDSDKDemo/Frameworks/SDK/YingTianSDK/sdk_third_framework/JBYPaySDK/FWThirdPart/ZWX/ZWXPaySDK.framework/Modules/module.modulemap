@@ -1,0 +1,6 @@
+framework module ZWXPaySDK {
+  umbrella header "ZWXPaySDK.h"
+
+  export *
+  module * { export * }
+}

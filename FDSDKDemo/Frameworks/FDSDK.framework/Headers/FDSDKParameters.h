@@ -10,25 +10,25 @@
 #import "FDSDKInitModel.h"
 
 typedef NS_ENUM(NSInteger, FDPlatformType) {
-    FDPlatformUnknown = 0,
-    FDHGPlatform      = 1,          //互冠
-    FDASPlatform      = 2,          //爱思
-    FDGPPlatform      = 3,          //果盘
-    FDQUPlatform      = 4,          //快用
-    FDTBPlatform      = 5,          //同步推
-    FDXYPlatform      = 6,          //xy
-    FDLYPlatform      = 7,          //麟游
-    FDYHPlatform      = 8,          //银狐
-    FDQDPlatform      = 9,          //乐玩
-    FDPPPlatform      = 10,         //pp助手
-    FDDockPlatform    = 11,         //94玩
-    FDYLPlatform      = 12,         //游龙
-    FDXZPlatform      = 13,         //玄藏
-    FDLHHPlatform     = 14,         //乐嗨嗨
-    FDSYPlatform      = 15,         //升游
-    FDGCPlatform      = 16,          //很猛
-    FDLeYouPlatform   = 17          //乐游（另类越狱版）
-
+    FDPlatformUnknown   = 0,
+    FDHGPlatform        = 1,          //互冠
+    FDASPlatform        = 2,          //爱思
+    FDGPPlatform        = 3,          //果盘
+    FDQUPlatform        = 4,          //快用
+    FDTBPlatform        = 5,          //同步推
+    FDXYPlatform        = 6,          //xy
+    FDLYPlatform        = 7,          //麟游
+    FDYHPlatform        = 8,          //银狐
+    FDQDPlatform        = 9,          //乐玩
+    FDPPPlatform        = 10,         //pp助手
+    FDDockPlatform      = 11,         //94玩
+    FDYLPlatform        = 12,         //游龙
+    FDXZPlatform        = 13,         //玄藏
+    FDLHHPlatform       = 14,         //乐嗨嗨
+    FDSYPlatform        = 15,         //升游
+    FDGCPlatform        = 16,          //很猛
+    FDLeYouPlatform     = 17,          //乐游（另类越狱版）
+    FDYingTianPlatform  = 18          //应天
 };
 
 

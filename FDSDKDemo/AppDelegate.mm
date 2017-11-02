@@ -24,12 +24,12 @@
     
     [self.window makeKeyAndVisible];
     
-//    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"50"];
-//    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"ea718a559b4a825e5481afc695ee2abb"];
+    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"50"];
+    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"ea718a559b4a825e5481afc695ee2abb"];
     
-    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"183"];
-    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"c87d1b52d2f702c1b9cb12ed0d224630"];
-    
+//    [[FDSDKParameters sharedHGSDKParameters] setAppId:@"183"];
+//    [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"c87d1b52d2f702c1b9cb12ed0d224630"];
+//    
 //            [[FDSDKParameters sharedHGSDKParameters] setAppId:@"143"];
 //            [[FDSDKParameters sharedHGSDKParameters] setAppKey:@"a90f40a1f59edb8bb6938ca98e043518"];
     
@@ -130,10 +130,12 @@
     [leYouSDKInitModel setGameID:@"1643"];
     [[FDSDKParameters sharedHGSDKParameters] setLeYouSDKInitModel:leYouSDKInitModel];
     
-    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDLeYouPlatform];
+    // 设置应天SDK参数
+    //请在mchannelinfos.plist中填写相关参数
     
+    
+    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDYingTianPlatform];
     [[FDSDK sharedInstance] fdInitWithSDKParameters:[FDSDKParameters sharedHGSDKParameters]];
-    
     return YES;
 }
 
