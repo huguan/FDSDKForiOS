@@ -52,7 +52,7 @@
     [centerButton addTarget:self action:@selector(centerButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:centerButton];
     
-    [[FDSDK sharedInstance] setFdLogoutBlock:^{
+    [[FDSDK sharedInstance] setFdLogoutBlock:^(FDNormalResultModel *result){
         NSLog(@"注销回调");
     }];
 }

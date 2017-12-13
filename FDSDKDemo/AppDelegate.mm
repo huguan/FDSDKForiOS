@@ -133,8 +133,14 @@
     // 设置应天SDK参数
     //请在mchannelinfos.plist中填写相关参数
     
+    // 设置久久SDK参数
+    FDJiuJiuSDKInitModel *jiuJiuSDKInitModel = [FDJiuJiuSDKInitModel new];
+    jiuJiuSDKInitModel.appid = @"cqryios";
+    jiuJiuSDKInitModel.URLScheme = @"Tracelesscom.com.syzr.hg.FDJiuJiuSDKDemo";
+    [[FDSDKParameters sharedHGSDKParameters] setJiuJiuSDKInitModel:jiuJiuSDKInitModel];
+
     
-    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDYingTianPlatform];
+    [[FDSDKParameters sharedHGSDKParameters] setFdPlatformType:FDJiuJiuPlatform];
     [[FDSDK sharedInstance] fdInitWithSDKParameters:[FDSDKParameters sharedHGSDKParameters]];
     return YES;
 }
@@ -155,7 +161,7 @@
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    return [[FDSDK sharedInstance] supportedInterface];
+    return [[FDSDK sharedInstance] fdApplication:application supportedInterfaceOrientationsForWindow:window];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

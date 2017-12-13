@@ -248,3 +248,20 @@
 
 
 
+@interface FDJiuJiuSDKInitModel : NSObject
+
+/**
+ 久久appID
+ */
+@property (nonatomic, strong) NSString *appid;
+
+/**
+ 久久urlScheme
+ */
+@property (nonatomic, strong) NSString *URLScheme;
+
+@end
+
+
+
+

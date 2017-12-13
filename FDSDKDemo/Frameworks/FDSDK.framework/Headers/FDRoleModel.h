@@ -8,8 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+/// 游戏角色相关事件
+typedef NS_ENUM(NSInteger, FD_ExtraDataType)
+{
+    FD_EXTRADATA_TYPE_OTHER = 0,  // 无事件或其它事件
+    FD_EXTRADATA_TYPE_SELECT_SERVER = 1,    // 选择服务器
+    FD_EXTRADATA_TYPE_CREATE_ROLE,  // 创建角色
+    FD_EXTRADATA_TYPE_ENTER_GAME,   // 进入游戏
+    FD_EXTRADATA_TYPE_CHANGE_ROLE_NAME,  // 更改角色名字
+    FD_EXTRADATA_TYPE_LEVEL_UP, // 等级提升
+    FD_EXTRADATA_TYPE_EXIT_GAME,    // 退出游戏
+};
+
 @interface FDRoleModel : NSObject
 
+/**
+ *  事件类型
+ *  注意：该值对于不同渠道SDK的事件意义不同
+ */
+@property (nonatomic) FD_ExtraDataType fdDataType;
 
 /**
  *  角色名称

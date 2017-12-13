@@ -15,6 +15,7 @@
 #import "FDSDKInitModel.h"
 #import "FDUserModel.h"
 #import "FDRoleModel.h"
+#import "FDNormalResultModel.h"
 
 //! Project version number for FDSDK.
 FOUNDATION_EXPORT double FDSDKVersionNumber;
@@ -54,7 +55,7 @@ typedef NS_ENUM(NSInteger, FDPayResultCode) {
 
 
 typedef void (^fdLoginSuccessBlock)(FDUserModel *userModel);
-typedef void (^fdLogoutBlock)();
+typedef void (^fdLogoutBlock)(FDNormalResultModel *result);
 typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
 
 
@@ -62,10 +63,7 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
 @class FDPayParamsModel;
 
 @interface FDSDK : NSObject
-/**
- *  客服屏幕旋转
- */
-@property (nonatomic, assign) NSUInteger supportedInterface;
+
 /**
  *  登陆之后当前用户对象
  */
@@ -182,7 +180,7 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
 - (void)fdShareResult:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options;
 
 /**
- * 上报玩家信息 可以在玩家进入游戏时或退出游戏时上报玩家信息 请务必保证有一次调用
+ * 上报玩家信息（上报事件类型由fdDataType属性确定）
  *
  */
 - (void)updateRoleInfo:(FDRoleModel *) roleModel;
@@ -204,5 +202,11 @@ typedef void (^fdPayBlock)(FDPayResultCode payResultCode);
 - (void)fdApplicationDidEnterBackground:(UIApplication *)application;
 - (void)fdApplicationWillTerminate:(UIApplication *)application;
 - (void)fdApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
+- (NSUInteger)fdApplication:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window;
+
+- (void)fdApplication:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
+- (BOOL)fdApplication:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^_Nullable)(NSArray * _Nullable))restorationHandler;
 
 @end

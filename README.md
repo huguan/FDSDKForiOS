@@ -45,7 +45,7 @@ XY		|   支持  |   支持    |
 果盘		|   支持  |   不支持  |  合并库过大
 乐游		|   支持  |   不支持  |  
 应天		|   支持  |   不支持  |  
-
+久久		|   支持  |   不支持  |  
 
 ##### FDSDKParameters参数说明
 <table>
@@ -449,6 +449,30 @@ XY		|   支持  |   支持    |
      </tbody>
 </table>
 
+##### JiuJiuSDK FDJiuJiuSDKInitModel参数说明
+<table>
+    <thead>
+        <tr>
+            <th>参数名</th>
+            <th>参数类型</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>appID</td>
+            <td>NSString</td>
+            <td>久久appID</td>
+        </tr>
+        <tr>
+            <td>URLScheme</td>
+            <td>NSString</td>
+            <td>久久URLScheme </td>
+        </tr>
+     </tbody>
+</table>
+
+
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -546,6 +570,12 @@ XY		|   支持  |   支持    |
     [leYouSDKInitModel setAppID:@"1643"];
     [leYouSDKInitModel setGameID:@"1643"];
     [[FDSDKParameters sharedHGSDKParameters] setLeYouSDKInitModel:leYouSDKInitModel];
+    
+    // 设置久久SDK参数
+    FDJiuJiuSDKInitModel *jiuJiuSDKInitModel = [FDJiuJiuSDKInitModel new];
+    jiuJiuSDKInitModel.appid = @"cqryios";
+    jiuJiuSDKInitModel.URLScheme = @"Tracelesscom.com.syzr.hg.FDJiuJiuSDKDemo";
+    [[FDSDKParameters sharedHGSDKParameters] setJiuJiuSDKInitModel:jiuJiuSDKInitModel];
 
 	// 设置应天SDK参数
     //请在mchannelinfos.plist中填写相关参数
@@ -1886,6 +1916,25 @@ URL Schemes：wxa3d58c25d7ec5c62<br/>
 
 ####6.渠道分包的设置：在项目根目录下创建mchannelinfos.plist文件，键值内容如下：</br>
 <img src="Snapshots/YingTian005.png"><br/>
+
+
+##JiuJiuSDK所需要配置</br>
+####1、添加系统依赖库和 Framework文件如下</br>
+<img src = "Snapshots/jiujiu_linkbinary.png">
+####2、添加bundle文件如下</br>
+<img src = "Snapshots/jiujiu_bundle.png">
+####3、修改 Other Linker Flags</br>
+VS81Sdk 内部使用了 Objective-C 的 Category，所以开发者需要在工程的 Targets -> Build Settings -> Linking –> Other Linker Flags 中添加–ObjC 选项，以 保证这些 Category 能够正常使用。</br>
+注意:区分-ObjC 的大小写，如果您没有添加–ObjC 编译选项，sdk 不能使用<br/>
+####4、修改 ATS，支持 HTTPS 请求</br>
+<img src = "Snapshots/jiujiu_ats.png">
+####5、添加白名单</br>
+<img src = "Snapshots/jiujiu_queriesscheme.png">
+####6、添加 URL Types</br>
+<img src = "Snapshots/jiujiu_urltype.png">
+####7、iOS10兼容，在Xcode8中添加一下设置</br>
+<img src = "Snapshots/jiujiu_keychainsharing.png">
+
 
 系统要求
 ==============

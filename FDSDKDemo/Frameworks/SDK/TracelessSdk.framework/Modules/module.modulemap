@@ -1,0 +1,6 @@
+framework module TracelessSdk {
+  umbrella header "TracelessSdk.h"
+
+  export *
+  module * { export * }
+}
