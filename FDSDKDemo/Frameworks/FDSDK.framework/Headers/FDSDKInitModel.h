@@ -246,8 +246,6 @@
     
 @end
 
-
-
 @interface FDJiuJiuSDKInitModel : NSObject
 
 /**
